@@ -1,14 +1,18 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Header from './components/common/Header';
+import PageNotFound from './components/common/PageNotFound';
 import HomePage from './components/home/HomePage';
 import AboutPage from './components/about/AboutPage';
 
 const App = () => (
   <>
     <Header />
-    <Route exact path="/" component={HomePage} />
-    <Route path="/about" component={AboutPage} />
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/about" component={AboutPage} />
+      <Route component={PageNotFound} />
+    </Switch>
   </>
 );
 
