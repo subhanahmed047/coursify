@@ -535,7 +535,7 @@ module.exports = function (webpackEnv) {
         )
       ),
       new webpack.DefinePlugin({
-        'process.env.API_URL': JSON.stringify('http://localhost:3001/'),
+        'process.env.API_URL': JSON.stringify('http://localhost:3001'),
       }),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
