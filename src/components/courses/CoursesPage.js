@@ -3,45 +3,29 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as courseActions from '../../redux/actions/courseActions';
+import CourseList from './CourseList';
 class CoursesPage extends React.Component {
-  state = {
-    course: {
-      title: '',
-    },
-  };
+  componentDidMount() {
+    const { courses, actions } = this.props;
 
-  handleChange = (event) => {
-    const course = { ...this.state.course, title: event.target.value };
-    this.setState({ course });
-  };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.props.actions.createCourse(this.state.course);
-  };
+    if (courses.length === 0) {
+      actions
+        .loadCourses()
+        .catch((err) => alert('Loading Courses Failed ' + err));
+    }
+  }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <>
         <h2>Courses</h2>
-        <h3>Add Course</h3>
-        <input
-          type="text"
-          onChange={this.handleChange}
-          value={this.state.course.title}
-        />
-
-        <input type="submit" value="Save" />
-        {this.props.courses.map((course) => (
-          <li key={course.title}>{course.title}</li>
-        ))}
-      </form>
+        <CourseList courses={this.props.courses} />
+      </>
     );
   }
 }
 
 CoursesPage.propTypes = {
-  actions: PropTypes.object.isRequired,
   courses: PropTypes.array.isRequired,
 };
 

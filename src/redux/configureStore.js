@@ -1,5 +1,6 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
+import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
 const configureStore = (initialState) => {
@@ -8,7 +9,7 @@ const configureStore = (initialState) => {
   return createStore(
     rootReducer,
     initialState,
-    composeEnhancers(applyMiddleware(reduxImmutableStateInvariant())) // do not use reduxImmutableStateInvariant in prod due to performance
+    composeEnhancers(applyMiddleware(thunk, reduxImmutableStateInvariant())) // do not use reduxImmutableStateInvariant in prod due to performance
   );
 };
 
