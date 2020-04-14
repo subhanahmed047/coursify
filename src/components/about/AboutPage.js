@@ -11,8 +11,8 @@ const AboutPage = () => (
     <Wrapper>
       <h1>About</h1>
       <p>
-        Jobsy is a community for developers around the world, where great minds
-        can interact and find their next roles.
+        Coursify is a place for developers around the world to learn new tools
+        and techniques everyday.
       </p>
       <Button>
         <Link to="/">Go Back To Home Page</Link>

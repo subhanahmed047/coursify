@@ -9,11 +9,18 @@ const { Content } = Layout;
 const HomePage = () => (
   <Content>
     <Wrapper>
-      <h1>Welcome to Jobsy</h1>
-      <p>A place for developers to find their next big role</p>
-      <Button>
-        <Link to="about">Learn More</Link>
-      </Button>
+      <h1>Welcome to Coursify</h1>
+      <p>
+        A place for developers to Learn, Improve, and Evolve on daily basis.
+      </p>
+      <div>
+        <Button>
+          <Link to="about">Learn More</Link>
+        </Button>
+        <Button type="primary" style={{ marginLeft: 5 }}>
+          <Link to="courses">Checkout Courses</Link>
+        </Button>
+      </div>
     </Wrapper>
   </Content>
 );
