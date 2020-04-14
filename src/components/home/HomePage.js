@@ -1,12 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Layout, Button } from 'antd';
+
+import Wrapper from '../common/Wrapper';
+
+const { Content } = Layout;
 
 const HomePage = () => (
-  <div>
-    <h1>Welcome to Jobsy</h1>
-    <p>A place for developers to find their next big role</p>
-    <Link to="about">Learn More</Link>
-  </div>
+  <Content>
+    <Wrapper>
+      <h1>Welcome to Jobsy</h1>
+      <p>A place for developers to find their next big role</p>
+      <Button>
+        <Link to="about">Learn More</Link>
+      </Button>
+    </Wrapper>
+  </Content>
 );
 
 export default HomePage;
