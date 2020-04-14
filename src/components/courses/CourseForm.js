@@ -5,8 +5,8 @@ import { Form, Input, Select } from 'antd';
 const { Option } = Select;
 
 const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
+  labelCol: { span: 4 },
+  wrapperCol: { span: 20 },
 };
 
 const CourseForm = ({ showForm, onClose }) => {
