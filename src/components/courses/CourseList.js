@@ -1,40 +1,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Table } from 'antd';
+
+import { Button, Tooltip } from 'antd';
+import { EditFilled, DeleteFilled } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
-const CourseList = ({ courses }) => (
-  <table className="table">
-    <thead>
-      <tr>
-        <th />
-        <th>Title</th>
-        <th>Author</th>
-        <th>Category</th>
-      </tr>
-    </thead>
-    <tbody>
-      {courses.map((course) => {
-        return (
-          <tr key={course.id}>
-            <td>
-              <a
-                className="btn btn-light"
-                href={'http://pluralsight.com/courses/' + course.slug}
-              >
-                Watch
-              </a>
-            </td>
-            <td>
-              <Link to={'/course/' + course.slug}>{course.title}</Link>
-            </td>
-            <td>{course.author.name}</td>
-            <td>{course.category}</td>
-          </tr>
-        );
-      })}
-    </tbody>
-  </table>
-);
+const CourseList = ({ courses }) => {
+  const columns = [
+    {
+      title: 'Title',
+      dataIndex: 'title',
+      key: 'title',
+    },
+    {
+      title: 'Author',
+      key: 'author[name]',
+      render: (text, record) => <Link to="#">{record.author.name}</Link>,
+    },
+    {
+      title: 'Category',
+      dataIndex: 'category',
+      key: 'category',
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (text, record) => (
+        <>
+          <Tooltip placement="top" title="Edit Course">
+            <Button type="link">
+              <EditFilled />
+            </Button>
+          </Tooltip>
+          <Tooltip placement="top" title="Delete Course">
+            <Button type="link" danger>
+              <DeleteFilled />
+            </Button>
+          </Tooltip>
+        </>
+      ),
+    },
+  ];
+  return <Table dataSource={courses} columns={columns} />;
+};
 
 CourseList.propTypes = {
   courses: PropTypes.array.isRequired,
